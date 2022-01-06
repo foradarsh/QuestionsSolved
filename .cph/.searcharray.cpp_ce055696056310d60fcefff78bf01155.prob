@@ -1,0 +1,1 @@
+{"name":"Local: searcharray","url":"c:\\Users\\g1iTcH\\Projects\\C++\\Questions\\searcharray.cpp","tests":[{"id":1615294975961,"input":"5\n10 20 36 56 43\n37","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\g1iTcH\\Projects\\C++\\Questions\\searcharray.cpp","group":"local","local":true}
