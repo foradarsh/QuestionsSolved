@@ -249,3 +249,119 @@ int main()
      sortArray(arr,5);
     return 0;
 }
+//Merge Sort
+#include<iostream>
+using namespace std;
+
+void merge(int *arr,int s,int e){
+    int mid = (s+e)/2;
+
+    int len1 = mid - s + 1;
+    int len2 = e - mid;
+    int *first = new int [len1];
+    int *second = new int [len2];
+    int mainArrayIndex = s;
+   
+    for(int i=0;i<len1;i++){
+        first[i] = arr[mainArrayIndex++];
+    }
+    int mainArrayIndex = mid+1;
+    
+    for(int i=0;i<len2;i++){
+        second[i] = arr[mainArrayIndex++];
+    }
+    //merge 2 sorted array
+    int index1=0;
+    int index2 =0;
+    mainArrayIndex=s;
+
+    while(index < len1 && index2 < len2){
+        if(first[index] < second[index2]){
+            first[index1] = arr[mainArrayIndex++];
+        }else{
+            second[index2] = arr[mainArrayIndex++];
+        }
+    }
+    
+    while(index1 < len1){
+        first[index1] = arr[mainArrayIndex++];
+    }
+    
+    while(index2 < len2){
+        second[index2] = arr[mainArrayIndex++];
+    }
+}
+
+void mergeSort( int *arr, int s , int e){
+    if(s >= e)
+        return;
+    int mid = (s+e)/2;
+    mergeSort(arr,s,mid);
+    
+    mergeSort(arr,mid+1,e);
+
+    merge(arr,s,e);
+}
+int main()
+{
+    int arr[5] = {2,5,1,6,9};
+    int n = 5;
+    mergeSort(arr,0,n-1);
+    return 0;
+}
+//Quick sort
+#include<iostream>
+using namespace std;
+
+int partition( int arr[], int s , int e){
+    int pivot = arr[s];
+    int cnt = 0;
+    for(int i=s+1;i<=e;i++){
+        if(arr[i]< = pivot){
+            cnt++;
+        }
+    }
+    int pivotIndex = s + cnt;
+    swap(arr[pivotIndex],arr[s]);
+
+    int i = s,j = e;
+
+    while(i < pivot && j > pivot){
+        while(arr[i] < pivot){
+            i++;
+        }
+        while(arr[j] > pivot){
+            j--;
+        }
+        if(i < pivot && j > pivot){
+            swap(arr[i++],arr[j--]);
+        }
+    }
+    return pivotIndex;
+
+    
+}
+
+void quickSort(int arr[], int s, int e){
+
+    if(s >= e)
+        return;
+    int p = partition(arr,s,e);  
+
+    quickSort(arr,s,p-1);
+    quickSort(arr,p+1,e);  
+
+}
+
+int main()
+{
+    int arr[5] = {2,5,1,6,9};
+    int n = 5;
+    quickSort(arr,0,n-1);
+    for (int i=0;i<n;i++){
+        cout << arr[i] << " ";
+    }cout << endl;
+
+    return 0;
+}
+//
