@@ -7,7 +7,7 @@ int fact(int n){
     for(int i=1;i<=n;i++){
         factorial=factorial*i;
     }
-return factorai;
+return factorial;
 }
 
 int main(){
